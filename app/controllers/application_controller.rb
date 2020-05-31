@@ -13,9 +13,13 @@ def photo_index
   
 end
 
-def photo_details 
-  the_photo_number = params.fetch("any_photonumber").at(0)
-  @photo= Photo.where({:id => the_photo_number})
-  render({:template => "photo_templates/photo_detail.html.erb"})
-end
+
+ def user_details
+    # Parameters: {"any_username"=>"augustine"}
+    the_un = params.fetch("any_username")
+    matches = User.where({ :username => the_un })
+    @the_user = matches.at(0)
+
+    render({ :template => "photo_templates/user_detail.html.erb"})
+  end
 end
