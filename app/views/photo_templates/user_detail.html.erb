@@ -28,5 +28,56 @@
 
 <h2>Own photos <%=@photos_match.count%> </h2>
 
+<table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
+
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+
+    <th></th>
+  </tr>
 
 
+  <% @photos_match.each do |a_photo_match| %>
+  <tr>
+    <td>
+      <img src="<%=a_photo_match.image%>">
+    </td>
+
+    <td>
+      <%=a_photo_match.caption%>
+    </td>
+
+    <td>
+      <%u=User.where({:id=>a_photo_match.owner_id}).at(0)%>
+      <%=u.username%>
+      
+      
+        </td>
+
+    <td>
+      <%=a_photo_match.created_at%>
+    </td>
+
+    <td>
+      <a href="/photos/<%=a_photo_match.id%>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+  </table>
+
+  </body>

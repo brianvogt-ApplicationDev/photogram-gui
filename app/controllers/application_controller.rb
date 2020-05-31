@@ -21,7 +21,7 @@ end
     @the_user = matches.at(0)
     user_id= @the_user.id
 
-    @photos_match = Photo.where({ :owner_id => the_un })
+    @photos_match = Photo.where({ :owner_id => @the_user })
      
 
     render({ :template => "photo_templates/user_detail.html.erb"})
