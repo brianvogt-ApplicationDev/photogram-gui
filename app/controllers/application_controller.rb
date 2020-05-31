@@ -19,6 +19,10 @@ end
     the_un = params.fetch("any_username")
     matches = User.where({ :username => the_un })
     @the_user = matches.at(0)
+    user_id= @the_user.id
+
+    @photos_match = Photo.where({ :owner_id => the_un })
+     
 
     render({ :template => "photo_templates/user_detail.html.erb"})
   end
