@@ -6,7 +6,12 @@ class ApplicationController < ActionController::Base
 end  
 
 def new_user
-  render({:template => "photo_templates/user_new.html.erb"})
+  the_username = params.fetch("input_username")
+  @u=User.new
+  @u.username =the_username
+  @u.save
+
+  redirect_to("/users/" + @u.username)
 end  
 
 def photo_index
